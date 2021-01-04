@@ -22,7 +22,7 @@
     "hassio_api": true,
     "homeassistant_api": false,
     "host_network": false,    
-
+    "image": "cavaliere78/{arch}-addon-calibre",
     "options": {
       "proxy_user_header": "X-User",
       "proxy_user": "admin",

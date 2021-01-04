@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6
+
+- Update calibre web to 0.6.9
+
 ## 0.5
 
 - Fix Ingress issue when page is reloaded

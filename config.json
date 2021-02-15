@@ -1,6 +1,6 @@
 {
     "name": "Calibre",
-    "version": "0.6",
+    "version": "0.7",
     "slug": "calibre",
     "description": "Calibre",
     "url": "https://github.com/cavaliere78/calibre_web_plus",
@@ -17,7 +17,7 @@
       "NET_ADMIN"
     ],
     "devices": [
-      "/dev/net/tun:/dev/net/tun:rwm"
+      "/dev/net/tun"
     ],
     "hassio_api": true,
     "homeassistant_api": false,

@@ -1,4 +1,8 @@
 # Changelog
+## 0.8
+
+- Update calibre web to 0.6.12
+
 ## 0.7
 
 - fix

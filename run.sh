@@ -38,7 +38,7 @@ else
 fi
 
 bashio::log.info "Starting Calibre Web..."
-python3 /usr/local/bin/cps -f -p /data/cw.db &
+python3 /usr/local/bin/cps -p /data/cw.db &
 
 
 

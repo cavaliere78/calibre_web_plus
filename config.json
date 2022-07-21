@@ -1,6 +1,6 @@
 {
     "name": "Calibre",
-    "version": "0.9",
+    "version": "0.92",
     "slug": "calibre",
     "description": "Calibre",
     "url": "https://github.com/cavaliere78/calibre_web_plus",
@@ -39,10 +39,9 @@
       "userdb": "str",
       "require_user": "bool"
     },
-        "ingress_port": 9998,
-	"webui": "http://[HOST]:[PORT:9998]",
-	"ingress": true,
-
+    "ingress_port": 9998,
+    "webui": "http://[HOST]:[PORT:9998]",
+    "ingress": true,
     "panel_icon": "mdi:book-open-page-variant",
     "panel_title": "Calibre",
     "environment": {

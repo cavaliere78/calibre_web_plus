@@ -1,0 +1,50 @@
+{
+    "name": "Calibre",
+    "version": "0.95",
+    "slug": "calibre",
+    "description": "Calibre",
+    "url": "https://github.com/cavaliere78/calibre_web_plus/calibre_web_plus",
+    "startup": "services",
+    "boot": "auto",
+    "arch": ["armv7"],
+    "ports": {
+              "8080/tcp": 8080,
+              "8083/tcp": 8083
+             },
+    "map": ["config:rw", "ssl:rw", "addons:rw", "share:rw", "backup:rw"],
+
+    "privileged": [
+      "NET_ADMIN"
+    ],
+    "devices": [
+      "/dev/net/tun"
+    ],
+    "hassio_api": true,
+    "homeassistant_api": false,
+    "host_network": false, 
+    "image": "cavaliere78/{arch}-addon-calibre",	
+    "options": {
+      "proxy_user_header": "X-User",
+      "proxy_user": "admin",
+      "start_calibre_server": true,
+      "ebook_path": "/share/calibre/",
+      "userdb": "/share/calibre/users.sqlite",
+      "require_user": false
+    },
+    "schema": {
+      "proxy_user_header": "str",
+      "proxy_user": "str",
+      "start_calibre_server": "bool",	
+      "ebook_path": "str",
+      "userdb": "str",
+      "require_user": "bool"
+    },
+    "ingress_port": 9998,
+    "webui": "http://[HOST]:[PORT:9998]",
+    "ingress": true,
+    "panel_icon": "mdi:book-open-page-variant",
+    "panel_title": "Calibre",
+    "environment": {
+      "LOG_FORMAT": "{LEVEL}: {MESSAGE}"
+    }
+}

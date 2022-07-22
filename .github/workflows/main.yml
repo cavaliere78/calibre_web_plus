@@ -27,7 +27,7 @@ jobs:
           # Arguments passed to the builder
           args: |
             --armv7 \
-            --target "/calibre_web_plus/build_data" \
+            --target "cavaliere78/calibre_web_plus" \
             --image "cavaliere78/armv7-addon-calibre" \
             --docker-hub "${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPOSITORY }}" \
             --docker-user "${{ secrets.DOCKER_HUB_USERNAME }}" \

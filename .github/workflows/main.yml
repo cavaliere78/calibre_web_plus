@@ -20,6 +20,6 @@ jobs:
           args: |
             --test \
             --armv7 \
-            --target addon-folder \
+            --target \data \
             --docker-hub user-name-or-space-name
 

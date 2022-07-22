@@ -28,7 +28,7 @@ jobs:
           args: |
             --test \
             --armv7 \
-            --target /calibre_web_plus \
+            --target /data/calibre_web_plus \
             --image "cavaliere78/armv7-addon-calibre" \
             --docker-hub "${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPOSITORY }}" \
             --docker-user "${{ secrets.DOCKER_HUB_USERNAME }}" \

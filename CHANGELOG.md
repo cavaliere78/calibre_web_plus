@@ -1,5 +1,5 @@
 # Changelog
-## 0.92
+## 0.95
 
 -  Update calibre to 0.6.18
 

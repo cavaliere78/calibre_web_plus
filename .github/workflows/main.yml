@@ -25,4 +25,11 @@ jobs:
         uses: home-assistant/builder@2022.07.0
         with:
           # Arguments passed to the builder
-          args: --armv7
+          args: |
+            --armv7 \
+            --target "/calibre_web_plus/build_data" \
+            --image "${{ steps.check.outputs.image }}" \
+            --docker-hub "${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPOSITORY }}" \
+            --docker-user "${{ secrets.DOCKER_HUB_USERNAME }}" \
+            --docker-password "${{ secrets.DOCKER_HUB_TOKEN }}" \
+            --addon

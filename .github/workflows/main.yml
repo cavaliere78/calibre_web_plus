@@ -20,6 +20,5 @@ jobs:
           args: |
             --test \
             --armv7 \
-            --target \data \
             --docker-hub user-name-or-space-name
 

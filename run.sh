@@ -51,4 +51,3 @@ bashio::net.wait_for 8083
 bashio::log.info "Starting NGinx..."
 exec nginx -c /etc/nginx.conf < /dev/null
 
-#python3 /usr/local/bin/cps -p /data/cw.db &

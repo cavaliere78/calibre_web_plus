@@ -30,6 +30,7 @@ RUN apt install -y python3-pip
 RUN apt-get install -y libxml2-dev
 RUN apt-get install -y libxslt-dev
 RUN apt-get install -y libffi-dev
+RUN apt-get install -y rust
 
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools

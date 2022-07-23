@@ -1,7 +1,5 @@
-FROM arm32v7/ubuntu:latest
-
-
-#test
+FROM ghcr.io/linuxserver/baseimage-ubuntu:arm32v7-focal
+#arm32v7/ubuntu:latest
 
 # set version label
 ARG BUILD_DATE

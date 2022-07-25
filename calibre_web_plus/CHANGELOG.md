@@ -1,4 +1,8 @@
 # Changelog
+## 0.953
+
+-  fix permission issue
+
 ## 0.952
 
 -  Update calibre to 0.6.18

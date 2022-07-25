@@ -69,17 +69,6 @@ RUN mkdir -p /tmp/bashio && curl -L -s https://github.com/hassio-addons/bashio/a
 RUN mv /tmp/bashio/lib /usr/lib/bashio && ln -s /usr/lib/bashio/bashio /usr/bin/bashio
 RUN rm -rf /tmp/bashio
 
-# Install calibre web Optional features
-RUN pip3 install calibreweb[metadata]
-# RUN pip3 install calibreweb[gdrive]
-# RUN pip3 install calibreweb[gmail]
-# RUN pip3 install calibreweb[goodreads]
-# RUN pip3 install calibreweb[ldap]
-# RUN pip3 install calibreweb[oauth]
-# RUN pip3 install calibreweb[comics]
-# RUN pip3 install calibreweb[kobo]
-
-
 #Clean up.
 RUN \
   echo "**** cleanup ****" && \

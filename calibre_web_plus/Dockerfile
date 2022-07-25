@@ -31,7 +31,7 @@ RUN apt-get install -y libxml2-dev
 RUN apt-get install -y libxslt-dev
 RUN apt-get install -y libffi-dev
 #RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-
+RUN apt-get install -y cargo
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 RUN pip install --upgrade setuptools_rust

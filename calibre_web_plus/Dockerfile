@@ -7,37 +7,53 @@ ARG VERSION
 ARG BUILD_VERSION
 ARG BUILD_ARCH
 ARG BASHIO_VERSION=0.13.1
+ARG CALIBREWEB_RELEASE
+
 # Add env
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive 
 ENV TZ=Europe/Rome
 
-# Setup base
-RUN apt-get clean
-RUN rm -rf /var/lib/apt/lists/*
-RUN apt-get clean
-RUN apt-get update 
-RUN apt-get install -y curl
-RUN apt-get install -y jq
-
-#Install python3
-RUN apt install -y python3
-
-#Install pip3
-RUN apt-get update
-RUN apt install -y python3-pip
-
-RUN apt-get install -y libxml2-dev
-RUN apt-get install -y libxslt-dev
-RUN apt-get install -y libffi-dev
-#RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-RUN apt-get install -y cargo
-RUN pip install --upgrade pip
-RUN pip install --upgrade setuptools
-RUN pip install --upgrade setuptools_rust
-
-# Install calibre web
-RUN pip3 install calibreweb
+RUN \
+  echo "**** install build packages ****" && \
+  apt-get update && \
+  apt-get install -y \
+    git \
+    libldap2-dev \
+    libsasl2-dev \
+    python3-pip && \
+  echo "**** install runtime packages ****" && \
+  apt-get install -y \
+    imagemagick \
+    libnss3 \
+    libxcomposite1 \
+    libxi6 \
+    libxslt1.1 \
+    libldap-2.4-2 \
+    libsasl2-2 \
+    libxrandr2 \
+    python3-minimal \
+    python3-pkg-resources \
+    unrar && \
+  echo "**** install calibre-web ****" && \
+  if [ -z ${CALIBREWEB_RELEASE+x} ]; then \
+    CALIBREWEB_RELEASE=$(curl -sX GET "https://api.github.com/repos/janeczku/calibre-web/releases/latest" \
+      | awk '/tag_name/{print $4;exit}' FS='[""]'); \
+  fi && \
+  curl -o \
+    /tmp/calibre-web.tar.gz -L \
+    https://github.com/janeczku/calibre-web/archive/${CALIBREWEB_RELEASE}.tar.gz && \
+  mkdir -p \
+    /app/calibre-web && \
+  tar xf \
+    /tmp/calibre-web.tar.gz -C \
+    /app/calibre-web --strip-components=1 && \
+  cd /app/calibre-web && \
+  pip3 install --no-cache-dir -U \
+    pip && \
+  pip install --no-cache-dir -U --ignore-installed --find-links https://wheel-index.linuxserver.io/ubuntu/ -r \
+    requirements.txt -r \
+    optional-requirements.txt
 
 # ADD Calibre for ebook conversion
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
@@ -64,11 +80,20 @@ RUN pip3 install calibreweb[metadata]
 # RUN pip3 install calibreweb[kobo]
 
 
-#Clean up
-RUN apt-get -y autoremove
-RUN rm -rf /tmp/* 
-RUN rm -rf /var/lib/apt/lists/*
-RUN rm -rf /var/tmp/*
+#Clean up.
+RUN \
+  echo "**** cleanup ****" && \
+  apt-get -y purge \
+    git \
+    libldap2-dev \
+    libsasl2-dev \
+    python3-pip && \
+  apt-get -y autoremove && \
+  rm -rf \
+    /tmp/* \
+    /var/lib/apt/lists/* \
+    /var/tmp/* \
+    /root/.cache
 
 
 ## Copy data

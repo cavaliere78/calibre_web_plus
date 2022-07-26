@@ -14,6 +14,7 @@ ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive 
 ENV TZ=Europe/Rome
 
+
 RUN \
   echo "**** install build packages ****" && \
   apt-get update && \
@@ -68,6 +69,25 @@ RUN apt-get install -y ca-certificates
 RUN mkdir -p /tmp/bashio && curl -L -s https://github.com/hassio-addons/bashio/archive/v${BASHIO_VERSION}.tar.gz | tar -xzf - --strip 1 -C /tmp/bashio
 RUN mv /tmp/bashio/lib /usr/lib/bashio && ln -s /usr/lib/bashio/bashio /usr/bin/bashio
 RUN rm -rf /tmp/bashio
+
+# Set S6 wait time
+ENV S6_CMD_WAIT_FOR_SERVICES=1 \
+    S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0 \
+    S6_SERVICES_GRACETIME=0
+
+# Allow UID and GID setting
+RUN if [ -f /etc/cont-init.d/02-tamper-check ]; then rm /etc/cont-init.d/02-tamper-check; fi \
+    && sed -i 's/bash/bashio/g' /etc/cont-init.d/10-adduser \
+    && sed -i 's/{PUID:-911}/(bashio::config "PUID")/g' /etc/cont-init.d/10-adduser \
+    && sed -i 's/{PGID:-911}/(bashio::config "PGID")/g' /etc/cont-init.d/10-adduser \
+    \
+    # Change home folder location
+    && sed -i 's|/config|/config/addons_config/calibre-web|g' /defaults/* \
+    && sed -i 's|/config|/config/addons_config/calibre-web|g' /etc/cont-init.d/* \
+    && sed -i 's|/config|/config/addons_config/calibre-web|g' /etc/services.d/*/run \
+    && usermod --home /config/addons_config/calibre-web abc
+
+
 
 #Clean up.
 RUN \

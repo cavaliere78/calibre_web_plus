@@ -1,13 +1,12 @@
 {
     "name": "Calibre",
-    "version": "0.957",
+    "version": "0.958",
     "slug": "calibre",
     "description": "Calibre",
     "url": "https://github.com/cavaliere78/calibre_web_plus/calibre_web_plus",
     "startup": "services",
     "boot": "auto",
     "arch": ["armv7"],
-    "init": false,
     "ports": {
               "8080/tcp": 8080,
               "8083/tcp": 8083

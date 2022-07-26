@@ -1,4 +1,7 @@
 # Changelog
+## 0.955
+
+-  set init: false
 ## 0.954
 
 -  fix permission issue

@@ -79,15 +79,7 @@ ENV S6_CMD_WAIT_FOR_SERVICES=1 \
 RUN if [ -f /etc/cont-init.d/02-tamper-check ]; then rm /etc/cont-init.d/02-tamper-check; fi \
     && sed -i 's/bash/bashio/g' /etc/cont-init.d/10-adduser \
     && sed -i 's/{PUID:-911}/(bashio::config "PUID")/g' /etc/cont-init.d/10-adduser \
-    && sed -i 's/{PGID:-911}/(bashio::config "PGID")/g' /etc/cont-init.d/10-adduser \
-    \
-    # Change home folder location
-    && sed -i 's|/config|/config/addons_config/calibre-web|g' /defaults/* \
-    && sed -i 's|/config|/config/addons_config/calibre-web|g' /etc/cont-init.d/* \
-    && sed -i 's|/config|/config/addons_config/calibre-web|g' /etc/services.d/*/run \
-    && usermod --home /config/addons_config/calibre-web abc
-
-
+    && sed -i 's/{PGID:-911}/(bashio::config "PGID")/g' /etc/cont-init.d/10-adduser 
 
 #Clean up.
 RUN \

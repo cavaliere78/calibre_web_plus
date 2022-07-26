@@ -1,4 +1,7 @@
 # Changelog
+## 0.956
+
+-  add jq
 ## 0.955
 
 -  set init: false

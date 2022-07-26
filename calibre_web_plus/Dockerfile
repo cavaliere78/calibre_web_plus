@@ -20,6 +20,7 @@ RUN \
   echo "**** install build packages ****" && \
   apt-get update && \
   apt-get install -y \
+    curl \
     git \
     libldap2-dev \
     libsasl2-dev \

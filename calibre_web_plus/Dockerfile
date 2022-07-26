@@ -31,7 +31,8 @@ RUN \
     libxcomposite1 \
     libxi6 \
     libxslt1.1 \
-    libldap-2.4-2 \
+#    libldap-2.4-2 \
+    libldap-common \   
     libsasl2-2 \
     libxrandr2 \
     python3-minimal \

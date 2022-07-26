@@ -64,6 +64,7 @@ RUN apt-get install -y --no-install-recommends calibre
 RUN apt-get install -y nginx
 
 #BASHIO
+RUN apt-get install -y jq
 RUN apt-get install -y bash
 RUN apt-get install -y ca-certificates 
 RUN mkdir -p /tmp/bashio && curl -L -s https://github.com/hassio-addons/bashio/archive/v${BASHIO_VERSION}.tar.gz | tar -xzf - --strip 1 -C /tmp/bashio

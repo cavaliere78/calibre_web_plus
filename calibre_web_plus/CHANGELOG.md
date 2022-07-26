@@ -1,4 +1,7 @@
 # Changelog
+## 0.954
+
+-  fix permission issue
 ## 0.953
 
 -  fix permission issue

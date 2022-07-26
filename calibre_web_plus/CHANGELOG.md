@@ -1,4 +1,7 @@
 # Changelog
+## 0.957
+
+-  fix path for calibre-web
 ## 0.956
 
 -  add jq

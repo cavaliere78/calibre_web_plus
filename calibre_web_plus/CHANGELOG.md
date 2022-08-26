@@ -1,4 +1,7 @@
 # Changelog
+## 0.960
+
+-  Update calibre to 0.6.19
 ## 0.958
 
 -  based on ubuntu
